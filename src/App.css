@@ -1,4 +1,10 @@
-.body{
-  background-color: blue;
+
+.content {
+  color: white; /* For contrast against the background */
+  /* text-align: center; */
+  margin:auto !important;
+  /* border: 1px ridge gray; */
+  opacity: 0.;
+  
 }
 
