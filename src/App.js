@@ -7,6 +7,9 @@ import './App.css';
 import Home from './pages/home/home';
 import DefaultLayout from './components/default-layout.js/default-layout';
 
+
+
+
 function AppRoutes() {
   // Define routes using useRoutes
   let routes = useRoutes([
