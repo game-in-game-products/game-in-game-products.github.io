@@ -4,8 +4,7 @@
 
 const DefaultLayout = ({ children }) => {
     return (
-        <div className="App">
-            <div className="background-image"></div>
+        <div className="App">            
             <div className="content">
                 {children}
             </div>
