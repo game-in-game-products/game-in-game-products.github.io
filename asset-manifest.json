@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/react-gh-pages/static/css/main.e7f2aea0.css",
+    "main.js": "/react-gh-pages/static/js/main.3324eeca.js",
+    "static/js/453.69263bc9.chunk.js": "/react-gh-pages/static/js/453.69263bc9.chunk.js",
+    "static/media/mafia.jpg": "/react-gh-pages/static/media/mafia.0520da918f12a2b30704.jpg",
+    "index.html": "/react-gh-pages/index.html",
+    "main.e7f2aea0.css.map": "/react-gh-pages/static/css/main.e7f2aea0.css.map",
+    "main.3324eeca.js.map": "/react-gh-pages/static/js/main.3324eeca.js.map",
+    "453.69263bc9.chunk.js.map": "/react-gh-pages/static/js/453.69263bc9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e7f2aea0.css",
+    "static/js/main.3324eeca.js"
+  ]
+}
