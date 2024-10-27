@@ -24,3 +24,21 @@ body {
   height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Custom height classes */
+.h-sm-100 { height: 100%; }
+.h-md-75 { height: 75%; }
+.h-md-50 { height: 50%; }
+.h-lg-50 { height: 50%; }
+
+/* Apply these only on specific screen sizes */
+@media (min-width: 576px) {
+  .h-sm-100 { height: 100%; }
+}
+@media (min-width: 768px) {
+  .h-md-75 { height: 75%; }
+  .h-md-50 { height: 50%; }
+}
+@media (min-width: 992px) {
+  .h-lg-50 { height: 50%; }
+}

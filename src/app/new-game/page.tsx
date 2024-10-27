@@ -55,13 +55,21 @@ const NewGame = () => {
                 <InputNumberButtons label="Citizen numbers: " defaulValue={6} handler={(value: any) => handler(ACTIONS.CITIZENS_UPDATE, value)} />
 
                 <b>Roles:</b>
-                <ul style={{ color: "darkblue" }}>
-                    <li> Doktor</li>
-                    <li> God Father</li>
-                    <li> Police</li>
+                <ul className="w-auto text-left " style={{ color: "darkblue" }}>
+                    <li className='p-1 m-1 bg-white' style={{
+                        backgroundColor: "rgb(229 229 229) !important"
+                    }}> Doktor</li>
+                    <li className='p-1 m-1 bg-white' 
+                    style={{
+                        backgroundColor: "rgb(229 229 229) !important"
+                    }}> God Father</li>
+                    <li className='p-1 m-1 bg-white'
+                    style={{
+                        backgroundColor: "rgb(229 229 229) !important"
+                    }}> Police</li>
                 </ul>
 
-                <Button variant="primary" onClick={() => handler(ACTIONS.NEXT_ACTION, undefined)}>Next</Button>{' '}
+                <Button variant="primary" className="w-100" onClick={() => handler(ACTIONS.NEXT_ACTION, undefined)}>Next</Button>{' '}
             </>
         )
     }
@@ -83,8 +91,12 @@ const NewGame = () => {
         }
     }
     return (
-        <div className="d-flex flex-column p-2 w-100 ">
-            {body()}
+        <div className="d-flex m-auto flex-column justify-content-center align-items-center p-2 w-sm-100 w-lg-50 h-sm-100 h-md-100 text-white">
+            <div className='p-4 ' style={{
+                border:"2px solid gray"
+            }}>
+                {body()}
+            </div>
 
         </div>
     )
