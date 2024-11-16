@@ -4,23 +4,20 @@ import Form from 'react-bootstrap/Form';
 import InputNumberButtons from '../../components/input-number/input-number';
 import { useState } from 'react';
 import CopyLinkComponent from '../../components/copy-link-component/copy-link-component';
+import Game from '@/model/Game';
+import { createGameApi } from '@/api/base-api';
+import { stat } from 'fs';
 
 const ACTIONS = { MAFIA_UPDATE: 1, CITIZENS_UPDATE: 2, NEXT_ACTION: 3, GROUP_NAME: 4 }
 
 
-interface GameInfo {
-    mafiaNumber: number;
-    citizenNumber: number;
-    groupName: string;
-    state: "REGISTRATION" | "SHARE_LINK";
-}
-
 const NewGame = () => {
-    const [gameInfo, setGameInfo] = useState<GameInfo>({
-        mafiaNumber: 3,
-        citizenNumber: 6,
-        groupName: '',
-        state: 'REGISTRATION',
+    const [gameInfo, setGameInfo] = useState<Game>({
+        groupName: ' your group name',
+        mafiaCount: 3,
+        citizenCount: 6,
+        members: [],
+        state: 'REGISTRATION'
     });
 
     const handler = (type: number, value: string | undefined) => {
@@ -29,14 +26,13 @@ const NewGame = () => {
                 setGameInfo({ ...gameInfo, groupName: value ?? '' })
                 break;
             case ACTIONS.MAFIA_UPDATE:
-                setGameInfo({ ...gameInfo, mafiaNumber: Number(value) })
+                setGameInfo({ ...gameInfo, mafiaCount: Number(value) })
                 break;
             case ACTIONS.CITIZENS_UPDATE:
-                setGameInfo({ ...gameInfo, citizenNumber: Number(value) })
+                setGameInfo({ ...gameInfo, citizenCount: Number(value) })
                 break;
             case ACTIONS.NEXT_ACTION:
-                alert(JSON.stringify(gameInfo))
-                setGameInfo({ ...gameInfo, state: 'SHARE_LINK'})
+                createGameApi(gameInfo, (newGame) => setGameInfo({ ...newGame, state: "SHARE_LINK" }))
                 break;
             default:
                 break;
@@ -59,14 +55,14 @@ const NewGame = () => {
                     <li className='p-1 m-1 bg-white' style={{
                         backgroundColor: "rgb(229 229 229) !important"
                     }}> Doktor</li>
-                    <li className='p-1 m-1 bg-white' 
-                    style={{
-                        backgroundColor: "rgb(229 229 229) !important"
-                    }}> God Father</li>
                     <li className='p-1 m-1 bg-white'
-                    style={{
-                        backgroundColor: "rgb(229 229 229) !important"
-                    }}> Police</li>
+                        style={{
+                            backgroundColor: "rgb(229 229 229) !important"
+                        }}> God Father</li>
+                    <li className='p-1 m-1 bg-white'
+                        style={{
+                            backgroundColor: "rgb(229 229 229) !important"
+                        }}> Police</li>
                 </ul>
 
                 <Button variant="primary" className="w-100" onClick={() => handler(ACTIONS.NEXT_ACTION, undefined)}>Next</Button>{' '}
@@ -76,7 +72,7 @@ const NewGame = () => {
 
     const getShareGameLinkForm = () => {
         return (
-            <CopyLinkComponent link="https://omidmohebbi.nl"></CopyLinkComponent>
+            <CopyLinkComponent link={"/" + gameInfo.token}></CopyLinkComponent>
         )
     }
 
@@ -93,7 +89,7 @@ const NewGame = () => {
     return (
         <div className="d-flex m-auto flex-column justify-content-center align-items-center p-2 w-sm-100 w-lg-50 h-sm-100 h-md-100 text-white">
             <div className='p-4 ' style={{
-                border:"2px solid gray"
+                border: "2px solid gray"
             }}>
                 {body()}
             </div>
@@ -103,3 +99,5 @@ const NewGame = () => {
 }
 
 export default NewGame;
+
+
